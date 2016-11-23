@@ -10,7 +10,7 @@
 
 它的计算是非常非常非常严格的。严格到什么程度呢？你的程序只要被改动了一个字节（甚至只是大小写的改动），它的值就会跟原来的不同
 
-至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取dex文件">
+至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓安全-apk完整性校验">
 <meta property="og:url" content="http://yoursite.com/2016/11/23/安卓安全-apk完整性校验/index.html">
@@ -19,15 +19,15 @@
 
 它的计算是非常非常非常严格的。严格到什么程度呢？你的程序只要被改动了一个字节（甚至只是大小写的改动），它的值就会跟原来的不同
 
-至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取dex文件">
-<meta property="og:updated_time" content="2016-11-23T09:41:19.870Z">
+至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。">
+<meta property="og:updated_time" content="2016-11-23T09:48:06.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓安全-apk完整性校验">
 <meta name="twitter:description" content="crc32全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。
 
 它的计算是非常非常非常严格的。严格到什么程度呢？你的程序只要被改动了一个字节（甚至只是大小写的改动），它的值就会跟原来的不同
 
-至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取dex文件">
+至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。">
   
     <link rel="alternative" href="/atom.xml" title="心灵栖息地" type="application/atom+xml">
   
@@ -175,7 +175,7 @@
 <blockquote>
 <p>它的计算是非常非常非常严格的。严格到什么程度呢？你的程序只要被改动了一个字节（甚至只是大小写的改动），它的值就会跟原来的不同</p>
 </blockquote>
-<p>至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。<br>在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取dex文件的crc32值来观察dex文件是否被篡改过了。看代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获取当前apk的crc32值</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">public static Long getCrc32(Context context)&#123;</div><div class="line">    String apkPath = ApkPathUtils.getApkPath(context);</div><div class="line">    ZipFile zipfile = null;</div><div class="line">    ZipEntry dexentry = null;</div><div class="line">    try &#123;</div><div class="line">        zipfile = new ZipFile(apkPath);</div><div class="line">        dexentry = zipfile.getEntry(&quot;classes.dex&quot;);</div><div class="line">    &#125; catch (IOException e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">    return dexentry.getCrc();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。<br><a id="more"></a><br>在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取dex文件的crc32值来观察dex文件是否被篡改过了。看代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获取当前apk的crc32值</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">public static Long getCrc32(Context context)&#123;</div><div class="line">    String apkPath = ApkPathUtils.getApkPath(context);</div><div class="line">    ZipFile zipfile = null;</div><div class="line">    ZipEntry dexentry = null;</div><div class="line">    try &#123;</div><div class="line">        zipfile = new ZipFile(apkPath);</div><div class="line">        dexentry = zipfile.getEntry(&quot;classes.dex&quot;);</div><div class="line">    &#125; catch (IOException e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">    return dexentry.getCrc();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>上文代码中的工具类ApkPathUtils,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class ApkPathUtils &#123;</div><div class="line"></div><div class="line">    public static String getApkPath(Context context)&#123;</div><div class="line">        try &#123;</div><div class="line">            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(),PackageManager.GET_META_DATA);</div><div class="line">            ApplicationInfo applicationInfo = packageInfo.applicationInfo;</div><div class="line">            return applicationInfo.publicSourceDir; // 获取当前apk包的绝对路径</div><div class="line">        &#125; catch (PackageManager.NameNotFoundException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        return &quot;&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>看getCrc32(Context context) 这个方法，只是给ZipFile这类塞了一个当前apk包的绝对路径就可以了，而这个当前apk的绝对路径可以通过PackageInfo拿到，记得加上读外部存储卡的权限。当然，5.0以后的权限另做处理<br>获取到crc32值之后一般有两种处理方式：</p>
 <ol>
