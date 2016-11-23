@@ -6,28 +6,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>安卓安全-apk完整性校验 | 心灵栖息地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本概念crc32全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。
+  <meta name="description" content="crc32全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。
 
 它的计算是非常非常非常严格的。严格到什么程度呢？你的程序只要被改动了一个字节（甚至只是大小写的改动），它的值就会跟原来的不同
 
-至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取d">
+至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取dex文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓安全-apk完整性校验">
 <meta property="og:url" content="http://yoursite.com/2016/11/23/安卓安全-apk完整性校验/index.html">
 <meta property="og:site_name" content="心灵栖息地">
-<meta property="og:description" content="基本概念crc32全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。
+<meta property="og:description" content="crc32全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。
 
 它的计算是非常非常非常严格的。严格到什么程度呢？你的程序只要被改动了一个字节（甚至只是大小写的改动），它的值就会跟原来的不同
 
-至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取d">
-<meta property="og:updated_time" content="2016-11-23T09:32:44.973Z">
+至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取dex文件">
+<meta property="og:updated_time" content="2016-11-23T09:41:19.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓安全-apk完整性校验">
-<meta name="twitter:description" content="基本概念crc32全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。
+<meta name="twitter:description" content="crc32全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。
 
 它的计算是非常非常非常严格的。严格到什么程度呢？你的程序只要被改动了一个字节（甚至只是大小写的改动），它的值就会跟原来的不同
 
-至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取d">
+至于crc32的值是如何计算的以及实现原理，本文不做讲解，有兴趣的可以google。在apk中，反编译后恶意的篡改代码重新打包主要集中在dex文件中，所以可以通过获取dex文件">
   
     <link rel="alternative" href="/atom.xml" title="心灵栖息地" type="application/atom+xml">
   
@@ -171,7 +171,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="crc32"><a href="#crc32" class="headerlink" title="crc32"></a>crc32</h3><p>全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。</p>
+        <h2 id="crc32"><a href="#crc32" class="headerlink" title="crc32"></a>crc32</h2><p>全称是“Cyclic Redundancy Check”，中文名是“循环冗余码”。</p>
 <blockquote>
 <p>它的计算是非常非常非常严格的。严格到什么程度呢？你的程序只要被改动了一个字节（甚至只是大小写的改动），它的值就会跟原来的不同</p>
 </blockquote>
@@ -185,7 +185,7 @@
 <blockquote>
 <p>注意：校验的代码最好加上版本的判断，只有在release版本的时候才会去校验，debug模式的时候不做判断，因为在debug模式的时候也判断的话，你就没法调试代码了，永远在修改，获取到的值永远不同</p>
 </blockquote>
-<h3 id="apk-Hash值判断"><a href="#apk-Hash值判断" class="headerlink" title="apk Hash值判断"></a>apk Hash值判断</h3><blockquote>
+<h2 id="apk-Hash值判断"><a href="#apk-Hash值判断" class="headerlink" title="apk Hash值判断"></a>apk Hash值判断</h2><blockquote>
 <p>MD5Hash算法的”数字指纹”特性，使它成为目前应用最广泛的一种文件完整性校验</p>
 </blockquote>
 <p>先看校验方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获取当前apk包的hash值</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">public String getHash(Context context)&#123;</div><div class="line"></div><div class="line">    MessageDigest msgDigest = null;</div><div class="line"></div><div class="line">    String apkPath = ApkPathUtils.getApkPath(context);</div><div class="line">    FileInputStream fis = null;</div><div class="line">    try &#123;</div><div class="line">        msgDigest = MessageDigest.getInstance(&quot;SHA-1&quot;);</div><div class="line">        byte[] bytes = new byte[1024];</div><div class="line">        int byteCount;</div><div class="line">        fis= new FileInputStream(new File(apkPath));</div><div class="line">        while ((byteCount = fis.read(bytes)) &gt; 0)</div><div class="line">        &#123;</div><div class="line">            msgDigest.update(bytes, 0, byteCount);</div><div class="line">        &#125;</div><div class="line">        BigInteger bi = new BigInteger(1, msgDigest.digest());</div><div class="line">        return bi.toString(16);</div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;finally &#123;</div><div class="line">        try &#123;</div><div class="line">            fis.close();</div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return &quot;&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
